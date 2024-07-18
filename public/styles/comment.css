@@ -1,0 +1,146 @@
+*{
+    box-sizing: border-box;
+   margin: 0px;
+   padding: 0px;
+
+}
+
+html{
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+body{
+    background-color: #343a40;
+   padding: 3rem 1.5rem;
+    min-height: 100vh;
+    min-width: 100vw;
+    padding-top: 0px;
+}
+.post-comment-container{
+    background-color: #495057;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    align-items: center;
+}
+.post-image{
+  width: 100%;
+  height: 600px;
+  margin-block: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.post-image img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    object-position: center;
+    border-radius: 1rem;
+}
+.post-info-container{
+    display: flex;
+    width: 100%;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items: center;
+    
+    
+}
+.post-title,.post-content{
+    width: 100%;
+    padding: 1rem 0px;
+    font-size: small;
+    color: white;
+    font-weight: bolder;
+    
+
+}
+
+.post-stats-container{
+    display: flex;
+    width: 100%;
+    justify-content:space-between;
+    align-items: center;
+    
+}
+.post-likes ,.post-comments{
+    padding: 1rem 0px;
+    width: 45%;
+    font-weight: bold;
+    color: white;
+   
+}
+
+.post-comments-container,.post-comment-form{
+    margin-block: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color:#373d4275;
+    border-radius: 1rem;
+    padding: 1.5rem 3rem;
+
+}
+.post-comments-sections{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    min-height: 150px;
+    background-color:#373d4275;
+    justify-content: space-evenly;
+    border-radius: 1rem;
+    padding: 2rem 0px;
+
+ 
+
+}
+
+.post-comment{
+    margin-block: 0.5rem;
+    border-radius: 1rem;
+    background-color: azure;
+    padding: 0.5rem;
+    margin-inline:auto ;
+    width: 90%;
+}
+.post-comment-user{
+    color:black;
+    font-weight: bolder;
+}
+.comment-form{
+    padding: 2rem 1rem;
+    background-color: #343a40;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.post-comment-input{
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border-radius: 1rem;
+    font-weight: bolder;
+    color: black;
+}
+.form-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.form-button button{
+
+    width: 50%;
+    border-radius: 1rem;
+    padding:0.5rem 0.2rem ;
+    background-color: cornflowerblue;
+}
+.form-button button:hover{
+
+    cursor: pointer;
+    background-color: rgba(100, 148, 237, 0.536);
+
+}
+
+

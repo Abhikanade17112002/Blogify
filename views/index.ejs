@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <%- include("./Partials/head.ejs") %> 
+    <style>
+        body {
+            background-color: #343a40;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar, .footer {
+            background-color: #212529;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+        .footer {
+            margin-top: auto;
+            padding: 1rem 0;
+        }
+        .form-control, .btn-primary {
+            background-color: #495057;
+            border-color: #495057;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .main-content {
+            flex: 1;
+            padding: 2rem 0;
+        }
+    </style>
+     <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+
+
+    <%-include("./Partials/navbar.ejs") %>
+    <!-- Main Content -->
+    <main class="container all-user-post-container">
+        
+                    
+            <% allPosts.forEach(post => { %>
+              
+                
+                <div class="card post-card  text-light border-0 shadow" >
+                        <div class="post-card-img">
+                            <img class="user-post-card-img" src=<%=post.userPostImage%> alt="Card image cap"   >
+                        </div>
+                    
+                    <div class="post-card-body">
+                        <h4 class="card-title"><%=post.title%></h4>
+                        <p class="card-content"><%=post.content %></p>
+                        
+                        <div class="profile-post-footer">
+                            <small>
+                                <a href="/user/like?id=<%=post._id%>">
+
+                                    <img src="/like.png" alt="" class="like"> <%=post.likes.length%>
+                                </a>
+                               
+                            </small>
+                            <small class="postcreatedat">
+                                <%=post.postCreatedTime %>
+                            </small>
+                               
+                        </div>
+                        <div class="user-info">
+                            <div class="post-comment-btn">
+                                
+                                    <a href="/post:<%=post._id%>">
+                                        <button  class="btn btn-sm btn-secondary">
+                                            View
+                                    </button>
+                                    </a>
+                                   
+                                
+                            </div>
+                            
+                            <div class="username">
+                                @<%=post.createdBy.username%>
+                            </div> 
+                            <div class="user-img">
+                                <img src=<%=post.createdBy.userProfileImage%> alt="">
+                            </div>
+                        
+                        </div>
+                         
+                       
+                            
+                     
+                    </div>
+                   
+                </div>
+            <% }) %>
+          
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <span id="abhi">&copy; 2024 Blogify. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <%- include("./Partials/script.ejs") %> 
+    <script src="./script.js"></script>
+</body>
+</html>

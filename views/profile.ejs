@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./Partials/head.ejs") %>
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+   
+ <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <!-- Profile Header -->
+    <header class="p-3 mb-3 border-bottom header text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    
+                    <span class="ml-2">@<%=user.username%></span>
+                </a>
+                <ul class="nav col-12 col-lg-auto ml-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                   
+                </ul>
+                <div class="dropdown text-end">
+                   
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        
+                            <img src=<%=img%> alt="User" width="32" height="32" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/signout">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="row">
+            <!-- Create Post Section -->
+            <div class="col-12 mb-3">
+                <h2>Create a Post</h2>
+                <form action="/user/post" method="POST"  enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" class="form-control" id="postTitle" placeholder="Enter post title">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" name="content" id="content" rows="3" placeholder="Enter post content"></textarea>
+                    </div>
+                    <div class="form-group">
+                       
+                           
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="post-image">Upload file</label>
+                        <input  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="post-image" name="post-image" type="file">
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+
+                        </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+            <!-- User Posts Section -->
+            <div class="col-12">
+                <h2>Your Posts</h2>
+                <div class="profile-post-container">
+                    
+                    <% currentUserPosts.posts.forEach(post => { %>
+                      
+                        
+                        <div class="card post-card  text-light border-0 shadow" >
+                            <div class="post-card-img">
+                                <img class="user-post-card-img" src=<%=post.userPostImage%> alt="Card image cap"   >
+                            </div>
+                        
+                            <div class="post-card-body">
+                                <h4 class="card-title"><%=post.title%></h4>
+                                <p class="card-content"><%=post.content %></p>
+                                
+                                <div class="profile-post-footer">
+                                    <small>
+                                        <a href="/user/like?id=<%=post._id%>">
+        
+                                            <img src="/like.png" alt="" class="like"> <%=post.likes.length%>
+                                        </a>
+                                       
+                                    </small>
+                                    <small class="postcreatedat">
+                                        <%=post.postCreatedTime %>
+                                    </small>
+                                       
+                                </div>
+                                <div class="user-info">
+                                    <div class="post-comment-btn">
+                                        <a href="/post:<%=post._id%>">
+                                          
+                                         
+                                        <button  class="btn btn-sm btn-secondary">
+                                            
+                                           Veiw
+                                        </button>
+                                    </a>
+                                    </div>
+                                    
+                                    <div class="username">
+                                        @<%=user.username%>
+                                    </div> 
+                                    <div class="user-img">
+                                        <img src=<%=user.userProfileImage%> alt="">
+                                    </div>
+                                
+                                </div>
+                                 
+                               
+                                    
+                             
+                            </div>
+                           
+                        </div>
+                    <% }) %>
+                  </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include("./Partials/script.ejs") %> 
+    <script src="/script.js"></script>
+</body>
+</html>
